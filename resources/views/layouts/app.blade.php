@@ -22,7 +22,10 @@
 				<a class="navbar-brand" href="/"><span>Gym</span>Bud-e</a>
 				<ul class="nav navbar-top-links navbar-right">
 					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-						<em class="fa fa-envelope"></em><span class="label label-danger">15</span>
+						@if(Auth::check())
+							<em class="fa fa-envelope"></em>
+							<span class="label label-danger">15</span>
+						@endif
 					</a>
 						<ul class="dropdown-menu dropdown-messages">
 							<li>
@@ -43,7 +46,10 @@
 						</ul>
 					</li>
 					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-						<em class="fa fa-bell"></em><span class="label label-info">5</span>
+						@if(Auth::check())
+							<em class="fa fa-bell"></em>
+							<span class="label label-info">5</span>
+						@endif
 					</a>
 						<ul class="dropdown-menu dropdown-alerts">
 							<li><a href="#">
