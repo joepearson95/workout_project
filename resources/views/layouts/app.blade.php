@@ -21,11 +21,11 @@
 					<span class="icon-bar"></span></button>
 				<a class="navbar-brand" href="/"><span>Gym</span>Bud-e</a>
 				<ul class="nav navbar-top-links navbar-right">
-					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-						@if(Auth::check())
+					<!---<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+						if(Auth::check())
 							<em class="fa fa-envelope"></em>
 							<span class="label label-danger">15</span>
-						@endif
+						endif
 					</a>
 						<ul class="dropdown-menu dropdown-messages">
 							<li>
@@ -44,31 +44,26 @@
 								</a></div>
 							</li>
 						</ul>
-					</li>
-					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-						@if(Auth::check())
-							<em class="fa fa-bell"></em>
-							<span class="label label-info">5</span>
-						@endif
-					</a>
-						<ul class="dropdown-menu dropdown-alerts">
-							<li><a href="#">
-								<div><em class="fa fa-envelope"></em> 1 New Message
-									<span class="pull-right text-muted small">3 mins ago</span></div>
-							</a></li>
-							<li class="divider"></li>
-							<li><a href="#">
-								<div><em class="fa fa-heart"></em> 12 New Likes
-									<span class="pull-right text-muted small">4 mins ago</span></div>
-							</a></li>
-							<li class="divider"></li>
-							<li><a href="#">
-								<div><em class="fa fa-user"></em> 5 New Followers
-									<span class="pull-right text-muted small">4 mins ago</span></div>
-							</a></li>
-						</ul>
-					</li>
+					</li>-->
 					@if(Auth::check())
+						<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+							<em class="fa fa-bell"></em>
+						<span class="label label-info">{{ $notificationsCount }}</span>
+						</a>
+						@if($notificationsCount != 0)
+							<ul class="dropdown-menu dropdown-alerts">
+								<li><a href="#">
+									<div><em class="fa fa-envelope"></em> 1 New Message
+										<span class="pull-right text-muted small">3 mins ago</span></div>
+								</a></li>
+								<li class="divider"></li>
+								<li><a href="#">
+									<div><em class="fa fa-heart"></em> 12 New Likes
+										<span class="pull-right text-muted small">4 mins ago</span></div>
+								</a></li>
+							</ul>
+						@endif
+						</li>
 						<li class="dropdown">
 							<a href="{{ route('logout') }}"><em class="fa fa-power-off" style="color:white;">&nbsp;</em></a>
 						</li>
