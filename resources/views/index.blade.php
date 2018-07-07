@@ -20,7 +20,7 @@
     
     <div class="panel panel-container">
         <div class="row">
-            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+            <div class="col-xs-6 col-md-6 col-lg-6 no-padding">
                 <div class="panel panel-teal panel-widget border-right">
                     <div class="row no-padding"><em class="fa fa-xl fa-dumbbell color-blue"></em>
                         <div class="large">{{ $user->days_active }}</div>
@@ -28,21 +28,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+            <div class="col-xs-6 col-md-6 col-lg-6 no-padding">
                 <div class="panel panel-blue panel-widget border-right">
                     <div class="row no-padding"><em class="fa fa-xl fa-chart-pie color-orange"></em>
                         <div class="large">Stats</div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-                <div class="panel panel-orange panel-widget border-right">
-                    <div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-                        <div class="large">24</div>
-                        <div class="text-muted">Users Online</div>
-                    </div>
-                </div>
-            </div>
+            </div> 
         </div><!--/.row-->
     </div>
     

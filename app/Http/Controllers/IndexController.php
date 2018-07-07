@@ -13,5 +13,5 @@ class IndexController extends Controller
     {
         $user = User::where('id', Auth::id())->first();
         return view('index', compact('user', $user));
-    }
+    }    
 }
