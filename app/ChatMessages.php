@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Notifications extends Model
+class ChatMessages extends Model
 {
     protected $fillable = [
-        'name', 'type', 'created_at'
+        'username', 'message'
     ];
 }
