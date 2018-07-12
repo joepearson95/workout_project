@@ -14,6 +14,10 @@
 //Check if the user is logged in on pages that arent the 'auth' pages
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/', 'IndexController@index');
+    Route::view('chatmessages', 'chatbox', [
+        'data' => App\ChatMessages::all()
+    ]);
+    Route::post('sendChatMessage', 'IndexController@sendChatMessage');
 });
 Auth::routes();
 Route::get('logout', 'auth\LoginController@logout');

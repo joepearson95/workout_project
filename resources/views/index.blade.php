@@ -42,38 +42,19 @@
         <div class="col-md-6">
             <div class="panel panel-default chat">
                 <div class="panel-heading">
-                    Chat
+                    Chat (Deleted Every 24 Hours)
                     <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fas fa-caret-square-up"></em></span></div>
-                <div class="panel-body">
-                    <ul>
-                    @foreach($messages as $message)
-                        @if($message->username == Auth::user()->name)
-                            <li class="right clearfix"><span class="chat-img pull-right">
-                                <img src="http://placehold.jp/99ccff/99ccff/60x60.png" alt="User Avatar" class="img-circle" />
-                                </span>
-                                <div class="chat-body clearfix">
-                                    <div class="header"><strong class="pull-left primary-font">{{$message->username}}</strong> <small class="text-muted">6 mins ago</small></div>
-                                    <p>{{$message->message}}</p>
-                                </div>
-                            </li>
-                        @else
-                            <li class="left clearfix"><span class="chat-img pull-left">
-                                <img src="http://placehold.jp/f70000/f70000/60x60.png" alt="User Avatar" class="img-circle" />
-                                </span>
-                                <div class="chat-body clearfix">
-                                <div class="header"><strong class="primary-font">{{$message->username}}</strong> <small class="text-muted">32 mins ago</small></div>
-                                    <p>{{$message->message}}</p>
-                                </div>
-                            </li>
-                        @endif
-                    @endforeach
-                    </ul>
+                <div class="panel-body" id="messages">
+                    
                 </div>
                 <div class="panel-footer">
-                    <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-md" placeholder="Type your message here..." /><span class="input-group-btn">
-                            <button class="btn btn-primary btn-md" id="btn-chat">Send</button>
-                    </span></div>
+                    <div class="input-group" style="width:100%">
+                        <input type="hidden" value="{{csrf_token()}}" name="_token" id="token"/>
+                        <input id="btn btn-input" name="message" type="text" class="form-control input-md message" placeholder="Type your message here..."/>
+                        <span class="input-group-btn">
+                            <input type="submit" class="btn btn-primary btn-md" id="btn-chat" value="send"/>
+                        </span>
+                    </div>
                 </div>
             </div>
             <div class="panel panel-default">
@@ -140,6 +121,24 @@
 @endsection	
 @section('scripts')
     <script>
+        $(document).ready(function(){
+            //AJAX insert, getting the message and a token to prevent double inserts. All when button clicked to enter
+            $("#btn-chat").click(function(){
+                var token = $("#token").val();
+                var message = $(".message").val();
+                
+                $.ajax({
+                    type: "post",
+                    data: "message=" + message + "&_token=" + token,
+                    url: "<?php echo url('sendChatMessage') ?>",
+                    success: function(data) {
+                        console.log(data);
+                        $(".message").val("");
+                    }
+                });
+            });
+        });
+
         $(document).on('click', '.panel-heading span.clickable', function(e){
             var $this = $(this);
             if(!$this.hasClass('panel-collapsed')) {
@@ -152,5 +151,11 @@
                 $this.find('em').removeClass('fa-toggle-down').addClass('fa-toggle-up');
             }
         })
+
+        /*quick function to reload the chat every 100seconds with AJAX
+        var auto_refresh  = setInterval (
+            function() {
+                $('#messages').load('<?php echo url('chatmessages');?>').fadeIn("slow");
+            },100);*/
     </script>
 @endsection
