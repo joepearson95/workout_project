@@ -18,6 +18,8 @@ Route::group(['middleware' => ['auth']], function() {
         'data' => App\ChatMessages::all()
     ]);
     Route::post('sendChatMessage', 'IndexController@sendChatMessage');
+    Route::post('sendTask', 'IndexController@sendTask');
+    Route::post('task/{id}', 'IndexController@deleteTask');
 });
 Auth::routes();
 Route::get('logout', 'auth\LoginController@logout');
