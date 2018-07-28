@@ -60,7 +60,7 @@
 		</form>
 		<ul class="nav menu">
 			<li class="active"><a href="index.html"><em class="fas fa-tachometer-alt">&nbsp;</em> Dashboard</a></li>
-			<li><a href="charts.html"><em class="fas fa-chart-bar">&nbsp;</em> Statistic</a></li>
+			<li><a href="{{ route('stats') }}"><em class="fas fa-chart-bar">&nbsp;</em> Statistic</a></li>
 			<li><a href="elements.html"><em class="fas fa-comments">&nbsp;</em> Forum</a></li>
 			<li class="parent ">
 				@if(Auth::check())

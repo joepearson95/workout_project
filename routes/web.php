@@ -20,6 +20,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('sendChatMessage', 'IndexController@sendChatMessage');
     Route::post('sendTask', 'IndexController@sendTask');
     Route::post('task/{id}', 'IndexController@deleteTask');
+    Route::get('stats', 'StatsController@index')->name('stats');
 });
 Auth::routes();
 Route::get('logout', 'auth\LoginController@logout');
